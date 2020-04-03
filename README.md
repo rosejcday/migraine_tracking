@@ -1,6 +1,10 @@
-# Automated Survey with Python for Tracking Migraines using Twilio
+# Automated Survey with for Tracking Migraines 
 
 ## Quickstart
+
+### Technologies
+
+Python 3 
 
 ### Local development
 
