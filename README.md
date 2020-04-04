@@ -1,10 +1,10 @@
-# Automated Survey with for Tracking Migraines 
+# Automated Survey with for Tracking Migraines
 
 ## Quickstart
 
 ### Technologies
 
-Python 3 
+Python 3
 
 ### Local development
 
@@ -16,4 +16,10 @@ Python 3
 
     ```bash
     pip3 install -r requirements.txt
+    ```
+
+1. Run tests.
+
+    ```bash
+    python3 -m pytest tests/
     ```
