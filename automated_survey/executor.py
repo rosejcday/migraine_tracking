@@ -1,5 +1,5 @@
-from spreadsheet import spreadsheet
 import pprint
+from spreadsheet import spreadsheet
 
 # Date	Severity 	Location 	Duration	Medication
 data = ["4/3/2020","3","Eyes and Neck","2","None"]

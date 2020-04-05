@@ -58,7 +58,4 @@ class spreadsheet(object):
 
         :return: A JSON of all the data stored in the sheet.
         """
-        try:
-            return self.sheet.get_all_records()
-        except:
-            print('There is no data in the sheet.')
+        return self.sheet.get_all_records()

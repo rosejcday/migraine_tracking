@@ -18,8 +18,21 @@ Python 3
     pip3 install -r requirements.txt
     ```
 
+1. Run the code.
+
+  ```bash
+  cd automated_survey
+  python3 executor.py  
+  ```
+
 1. Run tests.
 
     ```bash
     python3 -m pytest tests/
     ```
+
+1. Run coverage report.
+
+  ```bash
+  pytest --cov=automated_survey tests/ --cov-report html
+  ```
