@@ -14,9 +14,9 @@ Python 3
 
 1. Install the requirements.
 
-    ```bash
-    pip3 install -r requirements.txt
-    ```
+```bash
+pip3 install -r requirements.txt
+```
 
 1. Run the code.
 
@@ -27,9 +27,9 @@ Python 3
 
 1. Run tests.
 
-    ```bash
-    python3 -m pytest tests/
-    ```
+```bash
+python3 -m pytest tests/
+```
 
 1. Run coverage report.
 
