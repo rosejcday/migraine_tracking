@@ -7,6 +7,21 @@ class spreadsheet(object):
         """
         Use credentials proviced to create a client to interact with the Google Drive API.
 
+        Usage:
+
+            >>> import pprint
+            >>> from spreadsheet import spreadsheet
+            >>>
+            >>> data = ["4/3/2020","3","Eyes and Neck","2","None"]
+            >>> sheet1 = spreadsheet('../client_secret.json', "migraine_tracker")
+            >>> sheet1.insert_data(data)
+            >>> returned = sheet1.return_data()
+            >>> sheet1.delete_data()
+            >>>
+            >>> # Pretty print the output of the entire sheet
+            >>> pp = pprint.PrettyPrinter()
+            >>> pp.pprint(returned)
+
         :param json: JSON configuration file from Google API.
         :param sheet_name: Name of the sheet to manipulate in Google Drive.
         """
