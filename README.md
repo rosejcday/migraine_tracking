@@ -1,5 +1,13 @@
 # Automated Survey with for Tracking Migraines
 
+***
+
+**Note**
+
+Currently a work in progress - development on using spreadsheets is being worked on at the moment and learning to interact with Twilio API. 
+
+***
+
 ## Quickstart
 
 ### Technologies
