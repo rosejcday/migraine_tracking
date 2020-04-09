@@ -1,20 +1,24 @@
 {
   "questions": [
     {
-      "body": "In a scale of 1-10, how would you rate your migraine?",
-      "type": "numeric"
+      "body": "How would you rate your migraine?",
+      "type": "numeric",
+      "id": 1
     },
     {
       "body": "Where is your migraine located today?",
-      "type": "numeric"
+      "type": "text",
+      "id": 2
     },
     {
       "body": "How long did your migraine last (in hours)?",
-      "type": "numeric"
+      "type": "hours",
+      "id": 3
     },
     {
       "body": "What medication did you take to treat the migraine?",
-      "type": "text"
+      "type": "text",
+      "id": 4
     }
   ],
   "title": "Migraines"
