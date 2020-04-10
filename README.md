@@ -20,10 +20,19 @@ Python 3
 
 1. Go to Google API Manager https://console.developers.google.com/. Then add Google Drive API to our project which will allow us to access spreadsheet inside of Google Sheets for our account. Once that’s added, we need to create some credentials to access the API so click on ***Add Credentials*** on the next screen you see after enabling the API. This JSON file should be added to the root directory of the repository.
 
+1. Setup `twilio.env` in the twilio_application directory to contain a secret key using the `example_twilio.env` example file. This secret is required for a session in Flask to run.
+
 1. Install the requirements.
 
 ```bash
 pip3 install -r requirements.txt
+```
+
+1. Start the development server.
+
+```bash
+cd automated_survey/
+python3 -m app run # Run the Flask application
 ```
 
 1. Expose your application to the wider internet using ngrok. To forward incoming messages, your development server will need to be publicly accessible.
@@ -36,13 +45,7 @@ Once you have started ngrok, update your TwiML app's SMS messaging URL setting t
 It will look something like this:
 
 ```bash
-http://demo.ngrok.io/voice
-```
-
-1. Start the development server.
-
-```bash
-python3 -m app run # Run the Flask application
+http://demo.ngrok.io/sms
 ```
 
 ## Running the tests

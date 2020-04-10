@@ -1,5 +1,7 @@
 import json
+import os
 
+from dotenv import load_dotenv
 from flask import Flask, request
 from flask import url_for, request, session
 from twilio import twiml
@@ -9,8 +11,11 @@ from parse import parseJson
 
 app = Flask(__name__)
 surv = parseJson('../survey.json') # Survey JSON
-# TODO: Remove to config
-app.secret_key = 'thisisanoodle' # Session secret
+
+path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'twilio.env'))
+load_dotenv(dotenv_path=path)
+SECRET_KEY = os.getenv("APP_SECRET")
+app.secret_key = SECRET_KEY # Session secret
 
 # SMS instructions for question type
 SMS_INSTRUCTIONS = {
