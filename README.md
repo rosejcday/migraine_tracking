@@ -52,13 +52,11 @@ Python 3
 
 You can run the tests locally using pytest.
 
-1. Run the tests.
+```bash
+python3 -m pytest tests/
+```
 
-  ```bash
-  python3 -m pytest tests/
-  ```
-
-  You can then view the results by building an HTML report with `pytest --cov=automated_survey tests/ --cov-report html`.
+You can then view the results by building an HTML report with `pytest --cov=automated_survey tests/ --cov-report html`.
 
 ## Meta
 
