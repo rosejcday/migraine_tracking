@@ -17,9 +17,6 @@ if data:
 else:
     print('WRONG')"""
 
-
-path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'twilio.env'))
-load_dotenv(dotenv_path=path)
-SECRET_KEY = os.getenv("APP_SECRET")
-print(SECRET_KEY)
-print(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '')))
+data_collected = [12015142415, 18604804670, '2020-04-10', 3, 'Neck and lower left side back of head', 2, 'None', 'Tired and stomach hurts']
+results = [str(i) for i in data_collected] # Make sure all elements in list are strings
+print(results)
