@@ -12,10 +12,10 @@ Currently a work in progress - development on using spreadsheets is being worked
 
 ## Technologies
 
-Python 3
-Flask
-Twilio API
-Google Sheets API
+- Python 3
+- Flask
+- Twilio API
+- Google Sheets API
 
 #### Development Stack
 
