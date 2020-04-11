@@ -21,7 +21,7 @@ Google Sheets API
 
 ![Alt Text](./static/stack.png)
 
-## Local development
+## Local Development
 
 1. Clone this repository and `cd` into it.
 
