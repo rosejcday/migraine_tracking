@@ -47,7 +47,7 @@ class spreadsheet(object):
         except:
             print("There appears to be an issue finding the sheet {}.".format(sheet_name))
 
-    def insert_data(self, data: list, index: int = 2):
+    def insert_data(self, data: list):
         """
         Insert data provided into the sheet.
 
@@ -55,7 +55,7 @@ class spreadsheet(object):
         :param index: Index to insert data into. Defaults to index 2, assuming the first index has headers.
         """
         try:
-            self.sheet.insert_row(data, index)
+            self.sheet.append_row(data, value_input_option='USER_ENTERED')
         except:
             print('Cannot append data to sheet.')
 
