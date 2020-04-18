@@ -19,6 +19,11 @@
       "body": "What medication did you take to treat the migraine?",
       "type": "text",
       "id": 4
+    },
+    {
+      "body": "Do you have any other notes to add?",
+      "type": "text",
+      "id": 5
     }
   ],
   "title": "Migraines"
