@@ -1,11 +1,13 @@
 
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/2bck9yiv5wg8u4wa3821.png)
 
+**3 April 2020**
+
 Happy Friday! I am excited to try something new and begin working with Twilio's APIs.
 
 ## Category - Engaging Engagements
 
-I am focusing on two categories during this hackathon: Engaging Engagements and Interesting Integrations. 
+I am focusing on two categories during this hackathon: Engaging Engagements and Interesting Integrations.
 
 **Engaging Engagements** looks at developing applications that a company could implement to better engage with their customers or to manage their business and **Interesting Integrations** focuss on the integration of Twilio with at least one other API.
 

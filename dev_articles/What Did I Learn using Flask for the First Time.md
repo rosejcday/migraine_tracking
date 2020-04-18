@@ -1,5 +1,7 @@
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/i2qep1xvgg0gb7bpcbf4.png)
 
+**16 April 2020**
+
 Happy Thursday! I hope things are going well. I have enjoyed working through some (ha, many) issues while learning Flask to integrate Python with Twilio's API. This week I will focus on the issues and learnings I had with using both Flask and Twilio for the first time.
 
 ## Quick Recap

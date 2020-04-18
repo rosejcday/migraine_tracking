@@ -1,5 +1,7 @@
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/q257k7gsxwtmbmlmb29i.png)
 
+**9 April 2020**
+
 Happy Thursday! I hope you are all doing well. It has been exciting to continue working with Twilio and Google sheets on this project. This week I will focus on the issues and learnings I had with using Google's APIs for the first time.
 
 ## Quick Recap
