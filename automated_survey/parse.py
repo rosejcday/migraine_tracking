@@ -33,7 +33,7 @@ class parseJson(object):
         """
         try:
             survey_dict = self._json_to_dict()['questions']
-            data = list(filter(lambda item: item['id'] == question_id, survey_dict))
+            data = [item for item in survey_dict if (item['id'] == question_id)]
 
             if data:
                 return data[0]['body'], data[0]['type']

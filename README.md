@@ -39,7 +39,7 @@
 1. Expose your application to the wider internet using ngrok. To forward incoming messages, your development server will need to be publicly accessible.
 
   ```bash
-  $ ngrok http 5000
+  ngrok http 5000
   ```
 
   Once you have started ngrok, update your TwiML app's SMS messaging URL setting to use your ngrok hostname.
