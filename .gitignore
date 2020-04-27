@@ -1,5 +1,6 @@
 client_secret.json
 .DS_Store
+sample.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
