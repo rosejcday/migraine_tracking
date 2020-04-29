@@ -58,7 +58,6 @@ def redirect_to_first_question(response):
     """
     Redirect the user to the first question of the survey /question/1.
     """
-    first_question, type = surv.question_metadata(1) # return first question
 
     first_question_url = url_for("question", question_id="1")
     response.redirect(url=first_question_url, method="GET")
@@ -75,8 +74,6 @@ def question(question_id):
     """
     id = int(question_id) # cast to an int, comes in as a string
     question, type = surv.question_metadata(id) # return first question
-    print(question)
-    print(type)
     session["question_id"] = id
     return sms_twiml(question, type)
 
