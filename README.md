@@ -54,9 +54,11 @@
 
 ### Demo
 
-Below, you will see a demo of the application being run:
+Below, you will see two demos of the application being run:
 
 ![Alt Text](./static/demo_1.gif)
+
+![Alt Text](./static/demo_2.gif)
 
 ## Running the tests
 
