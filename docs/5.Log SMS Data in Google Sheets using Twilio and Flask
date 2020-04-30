@@ -1,0 +1,96 @@
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/9vf51in1ytzmvfg5vhm8.png)
+
+**30 April 2020**
+
+Happy Wednesday evening and last day of the Twilio x Dev Hackathon! I hope you are all doing well. It has been great to spend the month of April working with Twilio and Google sheets on this project in order to capture SMS data from a survey.
+
+For those who may not have seen the other posts in this series, you can view them above. The first post began as the initial start of the project in [Tracking Migraines with SMS](https://dev.to/rosejcday/tracking-migraines-with-sms-4hhl) which is just an introductory post.
+
+The setup of Google Sheets is discussed in [Setting up Python to Connect to Google Sheets](https://dev.to/rosejcday/setting-up-python-to-connect-to-google-sheets-2ak7) where I talked about API Errors due to scope along with path issues with PyTest.
+
+My first experience with Flask is talked about in the post [What I Learned using Flask for the First Time](https://dev.to/rosejcday/setting-up-twilio-with-flask-and-testing-surveys-3e9k) in which I discussed port issues, data types, casting data types, and Flask sessions. This section also details issues with getting to the next question in the survey.
+
+The final integration of Google Sheets and Twilio is discussed in [Integrating Twilio with Google Sheets](https://dev.to/rosejcday/integrating-twilio-with-google-sheets-7p6). This post discusses clearing results in a list, and data import issues with Google Sheets appending single quotes at the start of numbers and dates.
+
+With all of that said, todays post will focus on the wrap up of the Twilio x Dev Hackathon, along with a walk through and discussion of the application flow through the functions in `app.py`.
+
+## Quick Recap
+
+For a quick recap on the project concept, I spend time logging migraines for the doctors office but don't remember the format she wanted, or the details she found important. This application was created as a way to request a survey for a migraine, quickly fill out the details, and log the data for later use at the doctors appointment.
+
+### Commonly Asked Questions for Migraines
+
+Below is a list of commonly asked questions relating to migraines:
+
+- In a scale of 1-10, how would you rate your migraine?
+- Where is your migraine located today?
+- How long did your migraine last (in hours)?
+- What medication did you take to treat the migraine?
+- Has anything changed? Is anything out of the ordinary? Do you have any other notes to add?
+
+### Category - Engaging Engagements and Interesting Integrations
+
+During this hackathon, I focused on two categories: Engaging Engagements and Interesting Integrations.
+
+**Engaging Engagements** looked at developing applications that a company could implement to better engage with their customers or to manage their business. An application of this type could be utilized by doctors offices in order to collect data commonly needed during patient visits or to have patients collect their own data for use in their visits.
+
+**Interesting Integrations** focused on the integration of the Twilio API with at least one other API. This application integrated Twilio with the Google Sheets API in order to log data in an easy to access format.
+
+### Link to Code
+
+To clone the code, please visit the GitHub project [Migraine Tracking](https://github.com/rosejcday/migraine_tracking).
+
+### Demo Link
+
+In the repository is also a GIF showing a brief [demo](https://github.com/rosejcday/migraine_tracking/blob/master/static/demo_2.gif) of the code. There is also a [README](https://github.com/rosejcday/migraine_tracking/blob/master/README.md) available for those who would like to run the code locally and try it out.
+
+## Application Flow
+
+The first route that is reached when the application receives an SMS is the `/sms` route that calls the function `sms_survey()`. This function looks to see if a question ID comes in and in the session, the function will redirect to the `/answer` route.
+
+Before a question ID will come in, the function will first default to collecting the Twilio number, the user number, and the date. *Note: These were hidden in the demo data output in Google Sheets.* These values are appended to the collected data and then the a welcome message will be displayed to the user through the `welcome_user()` function. After displaying the welcome message, the user is redirected to the first question in the survey.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/6nqu4h4c72sy73tncobp.png)
+
+`welcome_user()`, seen below, will return a brief message to the user. This object allows the application to grab out the questions using the question ID, in this case, 1. Once the first question and its type has been collected, the user is directed to the `/question/<question_id>` route.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/us993ai9jbrbnfeeb4bg.png)
+
+The `/question/<question_id>` route takes in the question ID and tells the application which question it should respond back to the user with. Using the question ID, we pass the ID into the `parseJson` pulls out the first question and its type. The question ID is stored into a session variable called `question_id` to be used as the application looks for the next question or the end of the survey. Once that has been captured, the `sms_twiml()` function is called with question and type.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/09nffwgotulg34iu3ggs.png)
+
+This function responds with the message and type of data to ask the user for. The three types of data asked for in this survey are text, hours, or a numeric number from 1 to 10.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/jz5d0cbub4iqhcs9n3cv.png)
+
+After the user has answered the question, the application will redirect to the `/answer/<question_id>` route. This route first iterates to the next question ID which is used to grab data collected from the `parseJson` object. Then, the user entered data for the previous question is extracted and appended to the `data_collected` list. `extract_content()` returns either text for text elements or numeric digits for hours and numeric answers. If data is available for the next question, the survey will continue by redirecting to the `/question/<question_id>` route, otherwise the survey will end and display a goodbye message through the use of the `goodbye_twiml()` function.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/ptrsf7tz5j7veq3qivsq.png)
+
+The `redirect_twiml()` redirects the survey to the `/question/<question_id>` route to allow the user to view and answer the next question, repeating the process until all questions have been answered.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/9oosea7pasl3ql8cw5gd.png)
+
+The `goodbye_twiml()` function ends the survey, appending all the data collected into the Google Sheet using the `spreadsheet` object. After a goodbye message is displayed to the user, the data collected is cleared from the `data_collected` list and the session variable for `question_id` is cleared.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/4iuhbfg80grifducgb4v.png)
+
+And that is the overall flow of the code from first question to last.
+
+### Development Stack
+
+Thank you for following along this past month as all of the pieces have come together to log the data into the Google sheet from the SMS survey.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/la7zchv71vf9rdwe5em7.png)
+
+Thank you to all those who put together this hackathon and participated in it. Have a Happy May!
+
+## Additional Resources
+
+### Reference Links
+[Twilio's Rest API](https://www.twilio.com/docs/usage/api)
+[Automated Survey - Python Flask App](https://www.twilio.com/docs/voice/tutorials/automated-survey-python-flask)
+[GitHub Sample Automated Survey](https://github.com/TwilioDevEd/automated-survey-flask)
+[Google Sheets and Python Example](https://www.youtube.com/watch?v=vISRn5qFrkM&list=PLqrz4nXepkz60FNw4ORm1iLTn_R5o9fBb)
+[Accessing Google Spreadsheets with Python](https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2)
